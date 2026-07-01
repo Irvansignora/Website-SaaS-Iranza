@@ -124,9 +124,9 @@ function createParticleField(canvas){
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!container) return;
 
-  const density = parseFloat(canvas.dataset.density) || 14;
+  const areaPerParticle = parseFloat(canvas.dataset.area) || 13000;
   const minCount = parseFloat(canvas.dataset.minCount) || 30;
-  const maxCount = parseFloat(canvas.dataset.maxCount) || 90;
+  const maxCount = parseFloat(canvas.dataset.maxCount) || 260;
   const LINK_DIST = 150;
   const PARALLAX = 18;
 
@@ -134,7 +134,7 @@ function createParticleField(canvas){
   let mouseX = 0, mouseY = 0, parX = 0, parY = 0;
   let running = false, rafId = null;
 
-  function countFor(w){ return Math.max(minCount, Math.min(maxCount, Math.round(w / density))); }
+  function countFor(w, h){ return Math.max(minCount, Math.min(maxCount, Math.round((w*h) / areaPerParticle))); }
 
   function resize(){
     width = container.clientWidth;
@@ -146,7 +146,7 @@ function createParticleField(canvas){
     canvas.style.height = height + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const n = reduceMotion ? 0 : countFor(width);
+    const n = reduceMotion ? 0 : countFor(width, height);
     particles = new Array(n).fill(0).map(() => ({
       x: Math.random()*width,
       y: Math.random()*height,
