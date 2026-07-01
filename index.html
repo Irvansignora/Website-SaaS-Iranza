@@ -81,8 +81,16 @@ h1,h2,h3,h4{margin:0; font-weight:600; letter-spacing:-0.01em;}
 .nav-link{font-size:13px; font-weight:400; line-height:1;}
 
 /* ===== GLOBAL NAV ===== */
-header{position:sticky; top:0; z-index:100;}
-.global-nav{background:var(--surface-black); height:44px;}
+header{
+  position:sticky; top:0; z-index:100; padding-top:0;
+  transition:padding-top .5s cubic-bezier(.16,1,.3,1);
+}
+.global-nav{
+  background:var(--surface-black); height:44px;
+  margin:0 auto; max-width:100%; border-radius:0; box-shadow:none;
+  transition:max-width .5s cubic-bezier(.16,1,.3,1), border-radius .5s cubic-bezier(.16,1,.3,1),
+             box-shadow .5s cubic-bezier(.16,1,.3,1), background-color .5s ease;
+}
 .global-nav-inner{display:flex; align-items:center; height:44px; gap:28px;}
 .wordmark{font-size:14px; font-weight:600; letter-spacing:0.02em; color:var(--on-dark); flex-shrink:0; display:flex; align-items:center;}
 .wordmark img{height:20px; width:auto; display:block;}
@@ -94,6 +102,20 @@ header{position:sticky; top:0; z-index:100;}
   display:none; background:transparent; color:var(--on-dark); border:none;
   width:32px; height:32px; font-size:16px; cursor:pointer;
 }
+
+/* ----- floating pill state, triggered by JS once the page is scrolled ----- */
+header.is-scrolled{padding-top:12px;}
+header.is-scrolled .global-nav{
+  max-width:min(920px, calc(100% - 32px));
+  border-radius:9999px;
+  background:rgba(20,20,22,0.72);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  backdrop-filter:blur(20px) saturate(180%);
+  box-shadow:0 10px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.08);
+}
+header.is-scrolled .global-nav-inner{padding:0 var(--sp-lg);}
+@media(max-width:640px){header.is-scrolled .global-nav-inner{padding:0 var(--sp-md);}}
+
 @media(max-width:833px){
   .nav-links{
     position:fixed; top:44px; left:0; right:0; background:var(--surface-black);
@@ -105,6 +127,11 @@ header{position:sticky; top:0; z-index:100;}
   .nav-links a{font-size:15px;}
   .navtoggle{display:block;}
   .nav-cta a:first-child{display:none;}
+  header.is-scrolled .nav-links{top:56px;}
+  header.is-scrolled .nav-links.open{
+    left:16px; right:16px; border-radius:20px;
+    background:rgba(20,20,22,0.92); -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
+  }
 }
 
 /* ===== BUTTONS ===== */
@@ -224,7 +251,7 @@ section{padding:var(--sp-section) 0;}
 }
 .on-dark .product-render{background:var(--tile-2);}
 .product-render:hover{transform:translateY(-6px);}
-.product-render img{width:100%; height:100%; object-fit:cover; display:block;}
+.product-render img{width:100%; height:100%; object-fit:cover; object-position:top center; display:block;}
 .product-render .ph{
   width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:12px; color:var(--ink-muted-48); text-align:center; padding:40px;
@@ -277,7 +304,7 @@ section{padding:var(--sp-section) 0;}
   border-radius:18px; border:1px solid var(--hairline);
 }
 .on-dark .gallery-tile{background:var(--tile-2); border-color:rgba(255,255,255,0.08);}
-.gallery-tile img{width:100%; height:100%; object-fit:cover;}
+.gallery-tile img{width:100%; height:100%; object-fit:cover; object-position:top center;}
 .gallery-tile .ph{
   width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:10px; color:var(--ink-muted-48); font-size:12px; text-align:center; padding:20px;
@@ -1079,6 +1106,31 @@ document.querySelectorAll('.tilt-card').forEach(card => {
     card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
   });
 });
+
+/* =========================================================================
+   FLOATING HEADER — collapses the full-width nav into a rounded, inset
+   "pill" once the page scrolls past the top, iOS-style (e.g. Camera app).
+   ========================================================================= */
+(function initFloatingHeader(){
+  const header = document.querySelector('header');
+  if(!header) return;
+  const THRESHOLD = 24;
+  let isScrolled = false;
+  let ticking = false;
+  function update(){
+    const shouldFloat = window.scrollY > THRESHOLD;
+    if(shouldFloat !== isScrolled){
+      isScrolled = shouldFloat;
+      header.classList.toggle('is-scrolled', isScrolled);
+    }
+    ticking = false;
+  }
+  function onScroll(){
+    if(!ticking){ requestAnimationFrame(update); ticking = true; }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  update();
+})();
 
 /* =========================================================================
    SCROLL PROGRESS BAR
