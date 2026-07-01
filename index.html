@@ -188,10 +188,6 @@ section{padding:var(--sp-section) 0;}
 .hero-mast .hero-tagline{animation-delay:.28s;}
 .hero-mast .hero-badges{animation-delay:.4s;}
 .hero-mast .hero-cta-row{animation-delay:.52s;}
-@media (prefers-reduced-motion: reduce){
-  .hero-mast > *{animation:none; opacity:1;}
-  .hero-glow{animation:none;}
-}
 .hero-mast{max-width:760px; margin:0 auto var(--sp-xl);}
 .eyebrow-chip{
   display:inline-block; font-size:14px; font-weight:600; color:var(--primary-on-dark);
@@ -395,9 +391,6 @@ footer{background:var(--canvas-parchment); padding:64px 0 var(--sp-lg); color:va
 /* ===== REVEAL ===== */
 .reveal{opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease;}
 .reveal.in{opacity:1; transform:none;}
-@media (prefers-reduced-motion: reduce){
-  .reveal{opacity:1; transform:none; transition:none;}
-}
 
 /* ===== PRELOADER ===== */
 #preloader{
@@ -496,9 +489,6 @@ body.loading{overflow:hidden;}
   50%{transform:translate(-6%,-6%) scale(1.1);}
 }
 .section-dark > .wrap, .section-dark2 > .wrap, .cta-band > .wrap{position:relative; z-index:1;}
-@media (prefers-reduced-motion: reduce){
-  .mesh-bg::before, .mesh-bg::after{animation:none;}
-}
 
 /* ===== FLOATING WHATSAPP BUTTON ===== */
 .float-wa{
@@ -517,7 +507,6 @@ body.loading{overflow:hidden;}
   0%{transform:scale(0.9); opacity:0.9;}
   100%{transform:scale(1.6); opacity:0;}
 }
-@media (prefers-reduced-motion: reduce){ .float-wa .ring{animation:none;} }
 
 </style>
 </head>
@@ -950,7 +939,6 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
   const heroSection = canvas.closest('.hero-band');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   let width, height, dpr;
   let particles = [];
@@ -1022,15 +1010,11 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
       ctx.fill();
     }
     ctx.restore();
-    if(!reduceMotion) requestAnimationFrame(step);
+    requestAnimationFrame(step);
   }
 
   resize();
   step();
-  if(reduceMotion){
-    // draw a single static frame so the network is still visible
-    setTimeout(() => { ctx.clearRect(0,0,width,height); step(); }, 30);
-  }
 })();
 
 /* =========================================================================
@@ -1105,7 +1089,6 @@ document.querySelectorAll('.tilt-card').forEach(card => {
 (function initCounters(){
   const counters = document.querySelectorAll('[data-count]');
   if(!counters.length) return;
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const co = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if(!entry.isIntersecting) return;
@@ -1113,7 +1096,6 @@ document.querySelectorAll('.tilt-card').forEach(card => {
       const target = parseFloat(el.getAttribute('data-count'));
       const suffix = el.getAttribute('data-suffix') || '';
       co.unobserve(el);
-      if(reduceMotion){ el.textContent = target + suffix; return; }
       const dur = 1200;
       const startTime = performance.now();
       function tick(now){
