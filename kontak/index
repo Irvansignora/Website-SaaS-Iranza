@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kontak Iranza — Konsultasi Business System & Payroll</title>
 <meta name="description" content="Hubungi tim Iranza untuk konsultasi Business System dan Iranza Payroll via WhatsApp atau email.">
-<link rel="canonical" href="https://www.iranza.com/kontak.html">
+<link rel="canonical" href="https://www.iranza.com/kontak/">
 <link rel="icon" type="image/png" href="https://res.cloudinary.com/dyhvx9wit/image/upload/v1774436218/iranza_favicon_kv1hdb.png">
 <link rel="apple-touch-icon" href="https://res.cloudinary.com/dyhvx9wit/image/upload/v1774436218/iranza_favicon_kv1hdb.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="/assets/style.css">
 </head>
 <body class="loading">
 
@@ -24,13 +24,13 @@
 <header>
   <div class="global-nav">
     <div class="wrap global-nav-inner">
-      <a href="index.html" class="wordmark"><img src="https://res.cloudinary.com/dyhvx9wit/image/upload/v1774436172/iranza_vlnnlu.png" alt="Iranza"></a>
+      <a href="/" class="wordmark"><img src="https://res.cloudinary.com/dyhvx9wit/image/upload/v1774436172/iranza_vlnnlu.png" alt="Iranza"></a>
       <nav class="nav-links nav-link" id="navlinks">
-        <a href="index.html">Home</a>
-        <a href="business-system.html">Business System</a>
-        <a href="payroll.html">Iranza Payroll</a>
-        <a href="cara-kerja.html">Cara Kerja</a>
-        <a href="kontak.html" class="active">Kontak</a>
+        <a href="/">Home</a>
+        <a href="/business-system/">Business System</a>
+        <a href="/payroll/">Iranza Payroll</a>
+        <a href="/cara-kerja/">Cara Kerja</a>
+        <a href="/kontak/" class="active">Kontak</a>
       </nav>
       <div class="nav-cta">
         <a href="https://app.iranza.com" target="_blank" rel="noopener" class="btn-dark-utility">Business System</a>
@@ -43,11 +43,11 @@
 
 <main id="top">
   <!-- PAGE HERO -->
-  <section class="page-hero">
+  <section class="page-hero" data-hero-three>
     <div class="mesh-bg" data-parallax="0.1"></div>
-    <canvas class="particles-canvas" data-particles-canvas data-max-count="55"></canvas>
+    <canvas class="hero-three-canvas"></canvas>
     <div class="wrap">
-      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Kontak</span></div>
+      <div class="breadcrumb"><a href="/">Home</a><span>/</span><span>Kontak</span></div>
       <h1 class="display-lg">Hubungi Kami</h1>
       <p>Jadwalkan demo gratis untuk Business System, atau mulai trial 7 hari Iranza Payroll — tim kami siap dampingi dari setup sampai pelatihan.</p>
       <div class="cta-row" style="margin-top:var(--sp-lg);">
@@ -100,14 +100,14 @@
       </div>
       <div class="foot-col dense-link">
         <h5>Produk</h5>
-        <a href="business-system.html">Business System</a>
-        <a href="payroll.html">Iranza Payroll</a>
-        <a href="cara-kerja.html">Cara Kerja</a>
+        <a href="/business-system/">Business System</a>
+        <a href="/payroll/">Iranza Payroll</a>
+        <a href="/cara-kerja/">Cara Kerja</a>
       </div>
       <div class="foot-col dense-link">
         <h5>Perusahaan</h5>
         <a href="https://iranza.com" target="_blank" rel="noopener">iranza.com</a>
-        <a href="kontak.html">Konsultasi Pajak</a>
+        <a href="/kontak/">Konsultasi Pajak</a>
       </div>
       <div class="foot-col dense-link">
         <h5>Kontak</h5>
@@ -122,6 +122,8 @@
   </div>
 </footer>
 
-<script src="assets/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/128/three.min.js"></script>
+<script src="/assets/hero-three.js"></script>
+<script src="/assets/main.js"></script>
 </body>
 </html>
