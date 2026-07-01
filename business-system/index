@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Business System — CRM, Gudang, Keuangan & Pajak | Iranza</title>
 <meta name="description" content="Business System by Iranza: CRM, sales, gudang, pembelian, keuangan, dan pelaporan pajak Coretax dalam satu platform cloud.">
-<link rel="canonical" href="https://www.iranza.com/business-system.html">
+<link rel="canonical" href="https://www.iranza.com/business-system/">
 <link rel="icon" type="image/png" href="https://res.cloudinary.com/dyhvx9wit/image/upload/v1774436218/iranza_favicon_kv1hdb.png">
 <link rel="apple-touch-icon" href="https://res.cloudinary.com/dyhvx9wit/image/upload/v1774436218/iranza_favicon_kv1hdb.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="/assets/style.css">
 </head>
 <body class="loading">
 
@@ -24,13 +24,13 @@
 <header>
   <div class="global-nav">
     <div class="wrap global-nav-inner">
-      <a href="index.html" class="wordmark"><img src="https://res.cloudinary.com/dyhvx9wit/image/upload/v1774436172/iranza_vlnnlu.png" alt="Iranza"></a>
+      <a href="/" class="wordmark"><img src="https://res.cloudinary.com/dyhvx9wit/image/upload/v1774436172/iranza_vlnnlu.png" alt="Iranza"></a>
       <nav class="nav-links nav-link" id="navlinks">
-        <a href="index.html">Home</a>
-        <a href="business-system.html" class="active">Business System</a>
-        <a href="payroll.html">Iranza Payroll</a>
-        <a href="cara-kerja.html">Cara Kerja</a>
-        <a href="kontak.html">Kontak</a>
+        <a href="/">Home</a>
+        <a href="/business-system/" class="active">Business System</a>
+        <a href="/payroll/">Iranza Payroll</a>
+        <a href="/cara-kerja/">Cara Kerja</a>
+        <a href="/kontak/">Kontak</a>
       </nav>
       <div class="nav-cta">
         <a href="https://app.iranza.com" target="_blank" rel="noopener" class="btn-dark-utility">Business System</a>
@@ -43,16 +43,16 @@
 
 <main id="top">
   <!-- PAGE HERO -->
-  <section class="page-hero">
+  <section class="page-hero" data-hero-three>
     <div class="mesh-bg" data-parallax="0.1"></div>
-    <canvas class="particles-canvas" data-particles-canvas data-max-count="55"></canvas>
+    <canvas class="hero-three-canvas"></canvas>
     <div class="wrap">
-      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Business System</span></div>
+      <div class="breadcrumb"><a href="/">Home</a><span>/</span><span>Business System</span></div>
       <h1 class="display-lg">Business System</h1>
       <p>CRM, sales, gudang, pembelian, keuangan &amp; pelaporan pajak — satu platform cloud yang menyatukan seluruh alur bisnis Anda.</p>
       <div class="tile-cta-row">
         <a href="https://app.iranza.com" target="_blank" rel="noopener" class="btn-primary">Coba Business System</a>
-        <a href="payroll.html" class="btn-secondary-pill">Lihat Iranza Payroll</a>
+        <a href="/payroll/" class="btn-secondary-pill">Lihat Iranza Payroll</a>
       </div>
       <div class="product-render reveal" data-mockup="businessSystem" style="margin-top:var(--sp-xxl);"></div>
     </div>
@@ -140,14 +140,14 @@
       </div>
       <div class="foot-col dense-link">
         <h5>Produk</h5>
-        <a href="business-system.html">Business System</a>
-        <a href="payroll.html">Iranza Payroll</a>
-        <a href="cara-kerja.html">Cara Kerja</a>
+        <a href="/business-system/">Business System</a>
+        <a href="/payroll/">Iranza Payroll</a>
+        <a href="/cara-kerja/">Cara Kerja</a>
       </div>
       <div class="foot-col dense-link">
         <h5>Perusahaan</h5>
         <a href="https://iranza.com" target="_blank" rel="noopener">iranza.com</a>
-        <a href="kontak.html">Konsultasi Pajak</a>
+        <a href="/kontak/">Konsultasi Pajak</a>
       </div>
       <div class="foot-col dense-link">
         <h5>Kontak</h5>
@@ -162,6 +162,8 @@
   </div>
 </footer>
 
-<script src="assets/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/128/three.min.js"></script>
+<script src="/assets/hero-three.js"></script>
+<script src="/assets/main.js"></script>
 </body>
 </html>
