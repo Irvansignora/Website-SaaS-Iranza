@@ -3,8 +3,8 @@
    WebGL, layered behind every hero (.hero-band on Home, .page-hero on the
    inner pages). Nodes float in 3D space, nearby nodes connect with a thin
    line, the whole field rotates gently and drifts toward the cursor for a
-   subtle parallax feel. Pauses off-screen via IntersectionObserver and
-   respects prefers-reduced-motion (draws a single static frame instead).
+   subtle parallax feel. Pauses off-screen via IntersectionObserver.
+   Note: runs regardless of prefers-reduced-motion by design.
    ========================================================================= */
 (function(){
   function initHeroThree(section){
@@ -12,7 +12,6 @@
     const canvas = section.querySelector('.hero-three-canvas');
     if(!canvas) return;
 
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isSmall = window.innerWidth < 640;
 
     const scene = new THREE.Scene();
@@ -117,16 +116,11 @@
       renderer.render(scene, camera);
       rafId = requestAnimationFrame(tick);
     }
-    function start(){ if(running || reduceMotion) return; running = true; tick(); }
+    function start(){ if(running) return; running = true; tick(); }
     function stop(){ running = false; if(rafId) cancelAnimationFrame(rafId); }
 
     resize();
     window.addEventListener('resize', resize);
-
-    if(reduceMotion){
-      renderer.render(scene, camera);
-      return;
-    }
 
     const io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ e.isIntersecting ? start() : stop(); });
