@@ -247,8 +247,8 @@ section{padding:var(--sp-section) 0;}
 .product-render img{width:100%; height:100%; object-fit:cover; object-position:top; display:block;}
 
 /* Mockup that docks/overlaps across the hero -> next section boundary (paas.id style) */
-.mockup-dock{position:relative; z-index:5; max-width:1440px; margin:-160px auto 0; padding:0 32px;}
-@media(max-width:734px){.mockup-dock{margin-top:-64px;}}
+.mockup-dock{position:relative; z-index:5; max-width:1440px; margin:-90px auto 0; padding:0 32px;}
+@media(max-width:734px){.mockup-dock{margin-top:-40px;}}
 .product-render .ph{
   width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:12px; color:var(--ink-muted-48); text-align:center; padding:40px;
@@ -532,7 +532,7 @@ body.loading{overflow:hidden;}
 
 /* ===== PAGE HERO (compact banner for sub-pages) ===== */
 .page-hero{
-  padding:76px 0 48px; text-align:center; position:relative; overflow:hidden;
+  padding:76px 0 64px; text-align:center; position:relative; overflow:hidden;
   background:var(--surface-black); color:var(--on-dark); isolation:isolate;
 }
 .page-hero .wrap{position:relative; z-index:2;}
@@ -544,7 +544,6 @@ body.loading{overflow:hidden;}
 .page-hero .breadcrumb a:hover{color:var(--on-dark);}
 .page-hero h1{color:var(--on-dark); margin-bottom:var(--sp-md);}
 .page-hero p{color:var(--body-muted); max-width:600px; margin:0 auto var(--sp-lg); font-size:19px;}
-.page-hero .tile-cta-row{margin-bottom:0;}
 @media(max-width:640px){.page-hero{padding:56px 0 44px;}}
 
 /* ===== ANIMATED MESH BACKGROUND (dark sections) ===== */
