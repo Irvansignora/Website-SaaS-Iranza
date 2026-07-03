@@ -101,7 +101,7 @@ navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => na
 /* scroll reveal with stagger — elements sharing a parent cascade in */
 document.querySelectorAll('.card-grid, .flow, .row-list, .gallery-grid').forEach(group => {
   group.querySelectorAll(':scope > .reveal').forEach((el, i) => {
-    el.style.transitionDelay = Math.min(i * 60, 360) + 'ms';
+    el.style.transitionDelay = Math.min(i * 100, 900) + 'ms';
   });
 });
 const ro = new IntersectionObserver(entries => {
